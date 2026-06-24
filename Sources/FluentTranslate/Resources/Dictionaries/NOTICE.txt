@@ -1,0 +1,4 @@
+The bundled collins_cobuild3.sqlite was converted from dictionary files supplied
+by the user for personal local use. It is not an open-source dictionary dataset.
+Remove it before public or commercial distribution unless you have obtained the
+necessary content licence from HarperCollins.

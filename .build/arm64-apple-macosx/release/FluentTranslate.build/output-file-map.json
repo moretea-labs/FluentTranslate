@@ -1,0 +1,151 @@
+{
+  "": {
+    "dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/FluentTranslate.d",
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/FluentTranslate.o",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/primary.swiftdeps"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/AppDelegate.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/AppDelegate.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/AppDelegate~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/AppDelegate.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/AppDelegate.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/AppState.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/AppState.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/AppState~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/AppState.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/AppState.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/FloatingPanelController.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/FloatingPanelController.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/FloatingPanelController~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/FloatingPanelController.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/FloatingPanelController.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/FluentTranslateApp.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/FluentTranslateApp.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/FluentTranslateApp~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/FluentTranslateApp.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/FluentTranslateApp.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/HotKeyManager.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/HotKeyManager.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/HotKeyManager~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/HotKeyManager.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/HotKeyManager.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/Models.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/Models.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/Models~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/Models.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/Models.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/SelectionCaptureService.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SelectionCaptureService.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SelectionCaptureService~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SelectionCaptureService.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SelectionCaptureService.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/Services/AITranslationClient.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/AITranslationClient.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/AITranslationClient~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/AITranslationClient.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/AITranslationClient.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/Services/DeepLTranslateClient.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/DeepLTranslateClient.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/DeepLTranslateClient~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/DeepLTranslateClient.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/DeepLTranslateClient.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/Services/HistoryStore.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/HistoryStore.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/HistoryStore~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/HistoryStore.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/HistoryStore.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/Services/KeychainStore.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/KeychainStore.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/KeychainStore~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/KeychainStore.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/KeychainStore.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/Services/LibreTranslateClient.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/LibreTranslateClient.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/LibreTranslateClient~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/LibreTranslateClient.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/LibreTranslateClient.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/Services/LocalDictionaryService.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/LocalDictionaryService.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/LocalDictionaryService~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/LocalDictionaryService.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/LocalDictionaryService.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/Services/MyMemoryTranslateClient.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/MyMemoryTranslateClient.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/MyMemoryTranslateClient~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/MyMemoryTranslateClient.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/MyMemoryTranslateClient.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/Services/ResponseCacheStore.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/ResponseCacheStore.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/ResponseCacheStore~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/ResponseCacheStore.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/ResponseCacheStore.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/Services/SpeechService.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SpeechService.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SpeechService~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SpeechService.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SpeechService.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/Services/TranslationCoordinator.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/TranslationCoordinator.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/TranslationCoordinator~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/TranslationCoordinator.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/TranslationCoordinator.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/SettingsStore.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SettingsStore.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SettingsStore~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SettingsStore.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SettingsStore.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/SettingsWindowController.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SettingsWindowController.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SettingsWindowController~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SettingsWindowController.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SettingsWindowController.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/Views/Components.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/Components.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/Components~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/Components.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/Components.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/Views/SettingsView.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SettingsView.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SettingsView~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SettingsView.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SettingsView.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/Views/SubmitTextEditor.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SubmitTextEditor.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SubmitTextEditor~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SubmitTextEditor.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/SubmitTextEditor.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/Sources/FluentTranslate/Views/TranslatorView.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/TranslatorView.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/TranslatorView~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/TranslatorView.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/TranslatorView.dia"
+  },
+  "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/DerivedSources/resource_bundle_accessor.swift": {
+    "object": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/resource_bundle_accessor.swift.o",
+    "swiftmodule": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/resource_bundle_accessor~partial.swiftmodule",
+    "swift-dependencies": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/resource_bundle_accessor.swiftdeps",
+    "diagnostics": "/Users/greyson/DevProjects/FluentTranslate/.build/arm64-apple-macosx/release/FluentTranslate.build/resource_bundle_accessor.dia"
+  }
+}
