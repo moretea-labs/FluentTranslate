@@ -1,4 +1,9 @@
 # Project-specific
+# Generated outputs and personal dictionary data must not be published.
+.build/
+.venv-mdict/
+dist/
+Sources/TranslateCore/Resources/*.tdict
 artifacts/
 coverage/
 *.tar.gz
