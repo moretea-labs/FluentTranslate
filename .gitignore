@@ -109,3 +109,11 @@ scripts/prepare-codex-handoff.sh
 scripts/codex-handoff-resume.sh
 scripts/repo-harness/
 # END: claude-runtime-temp
+.repo-harness/mcp.local.json
+.repo-harness/mcp.tokens.json
+.repo-harness/mcp.oauth.json
+.repo-harness/mcp.oauth-tokens.json
+.repo-harness/mcp.runtime.json
+.ai/harness/mcp/audit.log
+.ai/harness/local-jobs/
+.ai/harness/controller/

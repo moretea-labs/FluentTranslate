@@ -1,34 +1,36 @@
-// swift-tools-version: 5.9
+// swift-tools-version: 5.10
 import PackageDescription
 
 let package = Package(
-    name: "FluentTranslate",
+    name: "TranslateDesk",
+    defaultLocalization: "zh-Hans",
     platforms: [
-        .macOS(.v13)
+        .macOS(.v14)
     ],
     products: [
-        .executable(name: "FluentTranslate", targets: ["FluentTranslate"])
+        .library(name: "TranslateCore", targets: ["TranslateCore"]),
+        .executable(name: "TranslateDesk", targets: ["TranslateDesk"])
     ],
     targets: [
-        .systemLibrary(
-            name: "CSQLite",
-            pkgConfig: "sqlite3",
-            providers: [
-                .brew(["sqlite3"]),
-                .apt(["libsqlite3-dev"])
+        .target(
+            name: "TranslateCore",
+            path: "Sources/TranslateCore",
+            resources: [
+                .process("Resources")
             ]
         ),
         .executableTarget(
-            name: "FluentTranslate",
-            dependencies: ["CSQLite"],
-            path: "Sources/FluentTranslate",
-            resources: [.process("Resources")],
-            linkerSettings: [
-                .linkedFramework("AppKit"),
-                .linkedFramework("Carbon"),
-                .linkedFramework("AVFoundation"),
-                .linkedFramework("Security")
+            name: "TranslateDesk",
+            dependencies: ["TranslateCore"],
+            path: "Sources/TranslateDesk",
+            resources: [
+                .process("Assets")
             ]
+        ),
+        .testTarget(
+            name: "TranslateCoreTests",
+            dependencies: ["TranslateCore"],
+            path: "Tests/TranslateCoreTests"
         )
     ],
     swiftLanguageVersions: [.v5]

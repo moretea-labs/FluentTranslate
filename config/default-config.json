@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "defaultPresetID": "local-first",
+  "accurateProviderID": "deepl-user",
+  "cacheEnabled": true,
+  "presets": [
+    {
+      "id": "local-first",
+      "displayName": "本地优先",
+      "localFirst": true,
+      "fallbackEnabled": true,
+      "providerOrder": ["mymemory-public"]
+    },
+    {
+      "id": "free-fast",
+      "displayName": "免费极速",
+      "localFirst": false,
+      "fallbackEnabled": true,
+      "providerOrder": ["mymemory-public", "libretranslate-user"]
+    },
+    {
+      "id": "recommended-quality",
+      "displayName": "推荐质量",
+      "localFirst": true,
+      "fallbackEnabled": true,
+      "providerOrder": ["deepl-user", "mymemory-public"]
+    }
+  ],
+  "expressionRouting": {
+    "dailyProviderID": "openai-compatible-user",
+    "teamsProviderID": "openai-compatible-user",
+    "emailProviderID": "openai-compatible-user"
+  },
+  "providers": [
+    {
+      "id": "local-dictionary",
+      "displayName": "本地词典",
+      "kind": "local",
+      "baseURL": "",
+      "enabled": true,
+      "credentialSource": "local",
+      "capabilities": ["dictionary", "translation", "explanation"],
+      "timeoutSeconds": 1,
+      "customHeaders": {},
+      "options": {}
+    },
+    {
+      "id": "mymemory-public",
+      "displayName": "MyMemory",
+      "kind": "myMemory",
+      "baseURL": "https://api.mymemory.translated.net/get",
+      "enabled": true,
+      "credentialSource": "builtIn",
+      "capabilities": ["translation"],
+      "timeoutSeconds": 8,
+      "customHeaders": {},
+      "options": {"contactEmail": ""}
+    },
+    {
+      "id": "deepl-user",
+      "displayName": "DeepL",
+      "kind": "deepL",
+      "baseURL": "https://api-free.deepl.com/v2/translate",
+      "enabled": false,
+      "credentialSource": "userConfigured",
+      "secretReference": "provider.deepl-user.apiKey",
+      "capabilities": ["translation", "contextualTranslation"],
+      "timeoutSeconds": 15,
+      "customHeaders": {},
+      "options": {
+        "accountType": "free",
+        "modelType": "prefer_quality_optimized"
+      }
+    },
+    {
+      "id": "libretranslate-user",
+      "displayName": "LibreTranslate",
+      "kind": "libreTranslate",
+      "baseURL": "https://libretranslate.com/translate",
+      "enabled": false,
+      "credentialSource": "userConfigured",
+      "secretReference": "provider.libretranslate-user.apiKey",
+      "capabilities": ["translation"],
+      "timeoutSeconds": 15,
+      "customHeaders": {},
+      "options": {}
+    },
+    {
+      "id": "openai-compatible-user",
+      "displayName": "OpenAI 兼容服务",
+      "kind": "openAICompatible",
+      "baseURL": "https://api.openai.com/v1/chat/completions",
+      "enabled": false,
+      "credentialSource": "userConfigured",
+      "secretReference": "provider.openai-compatible-user.apiKey",
+      "model": "",
+      "capabilities": ["contextualTranslation", "dailyExpression", "teamsExpression", "emailExpression", "explanation"],
+      "timeoutSeconds": 30,
+      "customHeaders": {},
+      "options": {}
+    }
+  ]
+}
