@@ -212,7 +212,7 @@ final class AppLifecycleController: NSObject, NSApplicationDelegate, NSWindowDel
         // into the compact window or replace text that the user is editing.
         let sourceApp = NSWorkspace.shared.frontmostApplication
         if sourceApp?.processIdentifier == ProcessInfo.processInfo.processIdentifier {
-            showQuickWindow(positionNearPointer: true)
+            // Do not interrupt editing or replace the current workspace.
             return
         }
         guard !isCapturingSelection else { return }
