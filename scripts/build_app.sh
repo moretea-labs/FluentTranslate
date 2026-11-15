@@ -13,7 +13,17 @@ swift build -c release --product TranslateDesk
 BIN_DIR="$(swift build -c release --show-bin-path)"
 DIST="$ROOT/dist"
 APP="$DIST/TranslateDesk.app"
+# Validation candidates must not replace the installed or normal dist app.
+if [[ -n "${TRANSLATEDESK_CANDIDATE_NAME:-}" ]]; then
+  if [[ ! "$TRANSLATEDESK_CANDIDATE_NAME" =~ ^[A-Za-z0-9_-]+$ ]]; then
+    echo "Invalid candidate name" >&2
+    exit 1
+  fi
+  APP="$ROOT/.build/validation/${TRANSLATEDESK_CANDIDATE_NAME}.app"
+fi
 CONTENTS="$APP/Contents"
+SOURCE_BINARY_SHA256="$(shasum -a 256 "$BIN_DIR/TranslateDesk" | awk '{print $1}')"
+SOURCE_DIFF_SHA256="$(git diff --binary -- scripts/build_app.sh Sources/TranslateDesk Sources/TranslateCore | shasum -a 256 | awk '{print $1}')"
 
 rm -rf "$APP"
 mkdir -p "$CONTENTS/MacOS" "$CONTENTS/Resources"
@@ -21,7 +31,7 @@ cp "$BIN_DIR/TranslateDesk" "$CONTENTS/MacOS/TranslateDesk"
 cp "$ROOT/Sources/TranslateCore/Resources/"*.tdict "$CONTENTS/Resources/"
 
 ICON_SRC="$ROOT/Sources/TranslateDesk/Assets/translatedesk-logo.png"
-ICONSET="$DIST/AppIcon.iconset"
+ICONSET="${APP%.app}.iconset"
 ICON_DEST="$CONTENTS/Resources/AppIcon.icns"
 if [[ ! -s "$ICON_SRC" ]]; then
   echo "Missing app logo: $ICON_SRC" >&2
@@ -81,4 +91,13 @@ echo -n 'APPL????' > "$CONTENTS/PkgInfo"
 SIGNING_IDENTITY="${TRANSLATEDESK_CODESIGN_IDENTITY:-027DE91258B930E819CBCC70A7794CBDD3308E3B}"
 codesign --force --deep --sign "$SIGNING_IDENTITY" "$APP"
 codesign --verify --deep --strict "$APP"
+if [[ -n "${TRANSLATEDESK_CANDIDATE_NAME:-}" ]]; then
+  cat > "${APP%.app}.provenance.txt" <<EOF
+source_head=$(git rev-parse HEAD)
+source_diff_sha256=$SOURCE_DIFF_SHA256
+unsigned_executable_sha256=$SOURCE_BINARY_SHA256
+signed_executable_sha256=$(shasum -a 256 "$CONTENTS/MacOS/TranslateDesk" | awk '{print $1}')
+signing_identity=$SIGNING_IDENTITY
+EOF
+fi
 echo "Built: $APP"
