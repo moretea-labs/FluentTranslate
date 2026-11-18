@@ -69,6 +69,7 @@ private struct AppleLanguagePackSetupView: View {
 struct SettingsView: View {
     @EnvironmentObject private var model: AppModel
     @State private var pendingProviderKeys: [String: String] = [:]
+    @State private var settingsFeedback: String?
 
     var body: some View {
         Form {
@@ -156,8 +157,17 @@ struct SettingsView: View {
                         Button("自建 LibreTranslate") { model.addLibreTranslateProvider() }
                     }
                 }
+                if let settingsFeedback {
+                    Text(settingsFeedback)
+                        .font(.caption)
+                        .foregroundStyle(settingsFeedback == "API Key 已安全保存" ? Color.green : Color.red)
+                }
                 ForEach($model.configuration.providers) { $provider in
-                    ProviderEditorView(provider: $provider, apiKey: pendingKeyBinding(for: provider.id))
+                    ProviderEditorView(
+                        provider: $provider,
+                        apiKey: pendingKeyBinding(for: provider.id),
+                        settingsFeedback: $settingsFeedback
+                    )
                 }
             }
 
@@ -184,13 +194,27 @@ struct SettingsView: View {
     }
 
     private func saveSettings() {
+        var credentialSaveError: String?
+        var savedCredential = false
         for provider in model.configuration.providers {
             let value = pendingProviderKeys[provider.id]?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
             guard !value.isEmpty else { continue }
-            model.saveSecret(value, for: provider)
-            pendingProviderKeys.removeValue(forKey: provider.id)
+            if model.saveSecret(value, for: provider) {
+                pendingProviderKeys.removeValue(forKey: provider.id)
+                savedCredential = true
+            } else if credentialSaveError == nil {
+                credentialSaveError = model.errorMessage ?? "API Key 保存失败，请重试"
+            }
         }
-        model.saveConfiguration()
+
+        let configurationSaved = model.saveConfiguration()
+        if let credentialSaveError {
+            settingsFeedback = credentialSaveError
+        } else if !configurationSaved {
+            settingsFeedback = model.errorMessage ?? "保存配置失败，请重试"
+        } else if savedCredential {
+            settingsFeedback = "API Key 已安全保存"
+        }
     }
 
     private func pendingKeyBinding(for providerID: String) -> Binding<String> {
@@ -234,6 +258,7 @@ private struct ProviderEditorView: View {
     @EnvironmentObject private var model: AppModel
     @Binding var provider: ProviderConfiguration
     @Binding var apiKey: String
+    @Binding var settingsFeedback: String?
     @State private var revealAdvanced = false
     @State private var isExpanded = false
 
@@ -298,7 +323,7 @@ private struct ProviderEditorView: View {
                     VStack(alignment: .leading, spacing: 6) {
                         HStack(spacing: 10) {
                             Button {
-                                savePendingKey()
+                                guard savePendingKey() else { return }
                                 Task { await model.testProviderConnection(provider) }
                             } label: {
                                 if connectionStatus == .checking {
@@ -467,11 +492,17 @@ private struct ProviderEditorView: View {
         providerRuntimeStatus.isReady ? .secondary : .orange
     }
 
-    private func savePendingKey() {
+    @discardableResult
+    private func savePendingKey() -> Bool {
         let value = apiKey.trimmingCharacters(in: .whitespacesAndNewlines)
-        guard !value.isEmpty else { return }
-        model.saveSecret(value, for: provider)
+        guard !value.isEmpty else { return true }
+        guard model.saveSecret(value, for: provider) else {
+            settingsFeedback = model.errorMessage ?? "API Key 保存失败，请重试"
+            return false
+        }
         apiKey = ""
+        settingsFeedback = "API Key 已安全保存"
+        return true
     }
 }
 private struct PresetEditorView: View {

@@ -547,31 +547,40 @@ final class AppModel: ObservableObject {
         await performPrimaryAction()
     }
 
-    func saveConfiguration() {
+    @discardableResult
+    func saveConfiguration() -> Bool {
         do {
             try configurationStore.save(configuration)
             providerConnectionStatuses = [:]
             refreshProviderRuntimeStatuses()
             errorMessage = nil
+            return true
         } catch {
             errorMessage = "保存配置失败：\(error.localizedDescription)"
+            return false
         }
     }
 
-    func saveSecret(_ value: String, for provider: ProviderConfiguration) {
-        guard let reference = provider.secretReference else { return }
+    @discardableResult
+    func saveSecret(_ value: String, for provider: ProviderConfiguration) -> Bool {
+        guard let reference = provider.secretReference else {
+            errorMessage = "此服务不支持保存 API Key"
+            return false
+        }
         let trimmed = value.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !trimmed.isEmpty else {
             errorMessage = "未输入新的 API Key，已保留原有配置"
-            return
+            return false
         }
         do {
             try keychain.save(trimmed, for: reference)
             providerConnectionStatuses[provider.id] = .idle
             refreshProviderRuntimeStatuses()
             errorMessage = nil
+            return true
         } catch {
             errorMessage = "保存 API Key 失败：\(error.localizedDescription)"
+            return false
         }
     }
 
