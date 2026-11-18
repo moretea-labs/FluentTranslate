@@ -98,6 +98,40 @@ final class TranslateCoreTests: XCTestCase {
         XCTAssertEqual(decoded.expressionRouting.teamsProviderID, "openai-compatible-user")
     }
 
+    func testDeepLSecretReferenceSurvivesConfigurationRoundTrip() throws {
+        let original = AppConfiguration.default.providers.first { $0.id == "deepl-user" }
+        let data = try JSONEncoder().encode(AppConfiguration.default)
+        let decoded = try JSONDecoder().decode(AppConfiguration.self, from: data)
+        let restored = decoded.providers.first { $0.id == "deepl-user" }
+
+        XCTAssertEqual(restored?.secretReference, original?.secretReference)
+    }
+
+    func testDeepLProviderUsesConfiguredSecretReference() async throws {
+        var configuration = AppConfiguration.default.providers.first { $0.id == "deepl-user" }!
+        configuration.enabled = true
+        let reference = try XCTUnwrap(configuration.secretReference)
+        let client = MockHTTPClient { request in
+            XCTAssertEqual(request.url?.absoluteString, ProviderConfiguration.deepLFreeTranslateURL)
+            XCTAssertEqual(request.value(forHTTPHeaderField: "Authorization"), "DeepL-Auth-Key test-only-secret")
+            let requestBody = try XCTUnwrap(request.httpBody)
+            let payload = try XCTUnwrap(JSONSerialization.jsonObject(with: requestBody) as? [String: Any])
+            XCTAssertEqual(payload["text"] as? [String], ["hello"])
+            let response = #"{"translations":[{"detected_source_language":"EN","text":"你好","model_type_used":"latency_optimized"}]}"#.data(using: .utf8)!
+            return (response, Self.response(url: request.url!, statusCode: 200))
+        }
+        let provider = DeepLProvider(
+            configuration: configuration,
+            httpClient: client,
+            secrets: DictionarySecretResolver(values: [reference: "test-only-secret"])
+        )
+
+        let result = try await provider.translate(.init(text: "hello", sourceLanguage: "en", targetLanguage: "zh"))
+
+        XCTAssertEqual(result.translatedText, "你好")
+        XCTAssertEqual(result.providerID, "deepl-user")
+    }
+
     func testNativeTranslationIsDefaultForSentencesAndNeedsNoCredentials() {
         let config = AppConfiguration.default
         let preset = config.presets.first { $0.id == "local-first" }!
