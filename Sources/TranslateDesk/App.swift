@@ -50,7 +50,9 @@ private struct StatusBarMenuView: View {
 
         Text("选中文本后按 ⌥A：快速查词或翻译")
 
-        SettingsLink {
+        Button {
+            controller.showSettingsWindow()
+        } label: {
             Label("服务设置…", systemImage: "gearshape")
         }
 

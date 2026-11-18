@@ -9,6 +9,7 @@ final class AppLifecycleController: NSObject, NSApplicationDelegate, NSWindowDel
 
     private var mainWindow: NSWindow?
     private var quickWindow: NSWindow?
+    private var settingsWindow: NSWindow?
     private var quickWindowPinned = false
     private var globalHotKey: GlobalHotKeyManager?
     private var isCapturingSelection = false
@@ -66,6 +67,33 @@ final class AppLifecycleController: NSObject, NSApplicationDelegate, NSWindowDel
 
     @objc func hideMainWindow(_ sender: Any? = nil) {
         mainWindow?.orderOut(nil)
+    }
+
+    func showSettingsWindow() {
+        let window = settingsWindow ?? makeSettingsWindow()
+        settingsWindow = window
+        NSApp.activate(ignoringOtherApps: true)
+        window.makeKeyAndOrderFront(nil)
+    }
+
+    private func makeSettingsWindow() -> NSWindow {
+        let view = SettingsView()
+            .environmentObject(model)
+            .frame(width: 760, height: 620)
+        let window = NSWindow(
+            contentRect: NSRect(x: 0, y: 0, width: 760, height: 620),
+            styleMask: [.titled, .closable, .resizable],
+            backing: .buffered,
+            defer: false
+        )
+        window.title = "服务设置"
+        window.contentViewController = NSHostingController(rootView: view)
+        window.delegate = self
+        window.isReleasedWhenClosed = false
+        window.tabbingMode = .disallowed
+        window.minSize = NSSize(width: 700, height: 520)
+        window.center()
+        return window
     }
 
     private func hideQuickWindow() {
