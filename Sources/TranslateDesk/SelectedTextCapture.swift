@@ -2,6 +2,7 @@
 import AppKit
 import ApplicationServices
 import Carbon
+import TranslateCore
 
 /// Read the selection while its source application is still frontmost.
 @MainActor
@@ -57,12 +58,24 @@ enum SelectedTextCapture {
 
         for _ in 0..<12 {
             if Task.isCancelled { return .noSelection }
-            if board.changeCount != before {
-                let capturedChange = board.changeCount
+            let observedChange = board.changeCount
+            if observedChange != before {
                 let text = normalized(board.string(forType: .string))
-                // Do not overwrite a newer clipboard change made by the user.
-                if board.changeCount == capturedChange { original.restore(to: board) }
-                return text.map(Result.text) ?? .noSelection
+                let disposition = ClipboardCapturePolicy.disposition(
+                    initialChangeCount: before,
+                    observedChangeCount: observedChange,
+                    currentChangeCount: board.changeCount
+                )
+                switch disposition {
+                case .waiting:
+                    break
+                case .captured:
+                    original.restore(to: board)
+                    return text.map(Result.text) ?? .noSelection
+                case .superseded:
+                    // A newer clipboard write belongs to the user; preserve it and reject the capture.
+                    return .noSelection
+                }
             }
             try? await Task.sleep(nanoseconds: 35_000_000)
         }

@@ -5,6 +5,39 @@ import FoundationNetworking
 #endif
 
 final class TranslateCoreTests: XCTestCase {
+    func testClipboardCapturePolicyWaitsUntilTheClipboardChanges() {
+        XCTAssertEqual(
+            ClipboardCapturePolicy.disposition(
+                initialChangeCount: 10,
+                observedChangeCount: 10,
+                currentChangeCount: 10
+            ),
+            .waiting
+        )
+    }
+
+    func testClipboardCapturePolicyAcceptsStableSelectionCopy() {
+        XCTAssertEqual(
+            ClipboardCapturePolicy.disposition(
+                initialChangeCount: 10,
+                observedChangeCount: 11,
+                currentChangeCount: 11
+            ),
+            .captured
+        )
+    }
+
+    func testClipboardCapturePolicyRejectsClipboardSupersededDuringRead() {
+        XCTAssertEqual(
+            ClipboardCapturePolicy.disposition(
+                initialChangeCount: 10,
+                observedChangeCount: 11,
+                currentChangeCount: 12
+            ),
+            .superseded
+        )
+    }
+
     func testEnglishMeaningPronunciationHandlesInfinitiveWithoutMislabelingPhrase() {
         XCTAssertEqual(EnglishMeaningHeadword.extract(from: "to deploy"), "deploy")
         XCTAssertEqual(EnglishMeaningHeadword.extract(from: "plan"), "plan")
