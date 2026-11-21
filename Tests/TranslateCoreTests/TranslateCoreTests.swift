@@ -38,6 +38,15 @@ final class TranslateCoreTests: XCTestCase {
         )
     }
 
+    func testClipboardCapturePolicyRestoresOriginalOnAbortOnlyWhileCaptureIsCurrent() {
+        XCTAssertTrue(ClipboardCapturePolicy.shouldRestoreOriginalClipboardAfterAbort(
+            initialChangeCount: 10, observedChangeCount: 11, currentChangeCount: 11))
+        XCTAssertFalse(ClipboardCapturePolicy.shouldRestoreOriginalClipboardAfterAbort(
+            initialChangeCount: 10, observedChangeCount: 10, currentChangeCount: 10))
+        XCTAssertFalse(ClipboardCapturePolicy.shouldRestoreOriginalClipboardAfterAbort(
+            initialChangeCount: 10, observedChangeCount: 11, currentChangeCount: 12))
+    }
+
     func testEnglishMeaningPronunciationHandlesInfinitiveWithoutMislabelingPhrase() {
         XCTAssertEqual(EnglishMeaningHeadword.extract(from: "to deploy"), "deploy")
         XCTAssertEqual(EnglishMeaningHeadword.extract(from: "plan"), "plan")

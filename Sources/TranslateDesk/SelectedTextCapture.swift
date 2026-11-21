@@ -57,7 +57,10 @@ enum SelectedTextCapture {
         up.post(tap: .cghidEventTap)
 
         for _ in 0..<12 {
-            if Task.isCancelled { return .noSelection }
+            if Task.isCancelled {
+                restoreOriginalClipboardIfStillCurrent(board, original, before)
+                return .noSelection
+            }
             let observedChange = board.changeCount
             if observedChange != before {
                 let text = normalized(board.string(forType: .string))
@@ -70,7 +73,9 @@ enum SelectedTextCapture {
                 case .waiting:
                     break
                 case .captured:
-                    original.restore(to: board)
+                    guard original.restore(to: board, ifChangeCountMatches: observedChange) else {
+                        return .noSelection
+                    }
                     return text.map(Result.text) ?? .noSelection
                 case .superseded:
                     // A newer clipboard write belongs to the user; preserve it and reject the capture.
@@ -79,7 +84,22 @@ enum SelectedTextCapture {
             }
             try? await Task.sleep(nanoseconds: 35_000_000)
         }
+        restoreOriginalClipboardIfStillCurrent(board, original, before)
         return .noSelection
+    }
+
+    private static func restoreOriginalClipboardIfStillCurrent(
+        _ board: NSPasteboard, _ original: PasteboardSnapshot, _ initialChangeCount: Int
+    ) {
+        let observed = board.changeCount
+        guard observed != initialChangeCount else { return }
+        _ = board.string(forType: .string)
+        guard ClipboardCapturePolicy.shouldRestoreOriginalClipboardAfterAbort(
+            initialChangeCount: initialChangeCount,
+            observedChangeCount: observed,
+            currentChangeCount: board.changeCount
+        ) else { return }
+        _ = original.restore(to: board, ifChangeCountMatches: observed)
     }
 
     private struct PasteboardSnapshot {
@@ -93,14 +113,16 @@ enum SelectedTextCapture {
             }
         }
 
-        func restore(to board: NSPasteboard) {
+        @discardableResult
+        func restore(to board: NSPasteboard, ifChangeCountMatches expected: Int) -> Bool {
+            guard board.changeCount == expected else { return false }
             board.clearContents()
             let copies = items.map { entries -> NSPasteboardItem in
                 let item = NSPasteboardItem()
                 for (type, data) in entries { item.setData(data, forType: type) }
                 return item
             }
-            if !copies.isEmpty { board.writeObjects(copies) }
+            return copies.isEmpty || board.writeObjects(copies)
         }
     }
 }

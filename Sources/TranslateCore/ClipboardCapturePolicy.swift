@@ -15,4 +15,14 @@ public enum ClipboardCapturePolicy {
         guard observedChangeCount != initialChangeCount else { return .waiting }
         return currentChangeCount == observedChangeCount ? .captured : .superseded
     }
+
+    public static func shouldRestoreOriginalClipboardAfterAbort(
+        initialChangeCount: Int,
+        observedChangeCount: Int,
+        currentChangeCount: Int
+    ) -> Bool {
+        disposition(initialChangeCount: initialChangeCount,
+                    observedChangeCount: observedChangeCount,
+                    currentChangeCount: currentChangeCount) == .captured
+    }
 }
